@@ -1,0 +1,9 @@
+#!/bin/sh
+# scripts to start the node application against the network
+cd /go/src/github.com/app
+cp /vars/profiles/{{ CHANNEL_NAME}}_connection_for_nodesdk.json connection.json
+cd academicRecords/main
+if [ -f 'package.json' ] && [ ! -d 'node_modules' ]; then
+    npm install
+fi
+npm start

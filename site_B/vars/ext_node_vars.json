@@ -1,0 +1,22 @@
+{
+  "ext_ordererorgs": [
+    "orgA-orderer.com"
+  ],
+  "ext_orderers": [
+    {
+      "fullname": "orderer1.orgA-orderer.com",
+      "mspid": "orgA-orderer-com",
+      "name": "orderer1",
+      "org": "orgA-orderer.com",
+      "port": "7056",
+      "type": "orderer",
+      "url": "192.168.0.26"
+    }
+  ],
+  "ext_orgattrs": {
+    "orgA-orderer.com": {
+      "certpath": "ordererOrganizations",
+      "mspid": "orgA-orderer-com"
+    }
+  }
+}

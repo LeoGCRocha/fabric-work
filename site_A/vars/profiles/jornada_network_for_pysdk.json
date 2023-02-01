@@ -1,0 +1,129 @@
+{
+  "name": "fabric-network",
+  "description": "Generated network configuration file",
+  "version": "0.1",
+  "client": {
+    "organization": "orgA.com",
+    "credentialStore": {
+      "path": "/tmp/hfc-kvs",
+      "cryptoStore": {
+        "path": "/tmp/hfc-cvs"
+      },
+      "wallet": "wallet-name"
+    }
+  },
+  "organizations": {
+    "orgA-orderer.com": {
+      "mspid": "orgA-orderer-com",
+      "orderers": [
+        "orderer1.orgA-orderer.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/ordererOrganizations/orgA-orderer.com/users/Admin@orgA-orderer.com/msp/signcerts/Admin@orgA-orderer.com-cert.pem",
+          "private_key": "/keyfiles/ordererOrganizations/orgA-orderer.com/users/Admin@orgA-orderer.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "orgA.com": {
+      "mspid": "orgA-com",
+      "peers": [
+        "peer1.orgA.com",
+        "peer2.orgA.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/orgA.com/users/Admin@orgA.com/msp/signcerts/Admin@orgA.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/orgA.com/users/Admin@orgA.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "orgX.com": {
+      "mspid": "orgX-com",
+      "peers": [
+        "peer1.orgX.com",
+        "peer2.orgX.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/orgX.com/users/Admin@orgX.com/msp/signcerts/Admin@orgX.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/orgX.com/users/Admin@orgX.com/msp/keystore/priv_sk"
+        }
+      }
+    }
+  },
+  "orderers": {
+    "orderer1.orgA-orderer.com": {
+      "url": "192.168.0.26:7056",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer1.orgA-orderer.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/orgA-orderer.com/orderers/orderer1.orgA-orderer.com/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer2.orgX.com": {
+      "url": "192.168.0.26:7052",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.orgX.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgX.com/peers/peer2.orgX.com/tls/ca.crt"
+      }
+    },
+    "peer1.orgX.com": {
+      "url": "192.168.0.26:7053",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.orgX.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgX.com/peers/peer1.orgX.com/tls/ca.crt"
+      }
+    },
+    "peer2.orgA.com": {
+      "url": "192.168.0.26:7054",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer2.orgA.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgA.com/peers/peer2.orgA.com/tls/ca.crt"
+      }
+    },
+    "peer1.orgA.com": {
+      "url": "192.168.0.26:7055",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.orgA.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgA.com/peers/peer1.orgA.com/tls/ca.crt"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.orgX.com": {
+      "url": "https://192.168.0.26:7050",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgX.com/ca/ca1.orgX.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "teste" }
+    },
+    "ca1.orgA.com": {
+      "url": "https://192.168.0.26:7051",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/orgA.com/ca/ca1.orgA.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "teste" }
+    }
+  }
+}

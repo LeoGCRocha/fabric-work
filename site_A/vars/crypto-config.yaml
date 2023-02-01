@@ -1,0 +1,46 @@
+---
+OrdererOrgs:
+  - Name: orgA-orderer.com
+    Domain: orgA-orderer.com
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - 192.168.0.26
+
+PeerOrgs:
+  - Name: orgA.com
+    Domain: orgA.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.orgA.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer2
+        CommonName: peer2.orgA.com
+        SANS:
+          - 192.168.0.26
+      - Hostname: peer1
+        CommonName: peer1.orgA.com
+        SANS:
+          - 192.168.0.26
+  - Name: orgX.com
+    Domain: orgX.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.orgX.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer2
+        CommonName: peer2.orgX.com
+        SANS:
+          - 192.168.0.26
+      - Hostname: peer1
+        CommonName: peer1.orgX.com
+        SANS:
+          - 192.168.0.26

@@ -1,0 +1,37 @@
+{
+  "Admin@orgB.com": {
+    "key": "Admin@orgB.com",
+    "org": "orgB.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgB.com/users/Admin@orgB.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgB.com/users/Admin@orgB.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "orgB.com": {
+    "key": "orgB.com",
+    "org": "orgB.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgB.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgB.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "orgB.com.tlsca": {
+    "key": "orgB.com",
+    "org": "orgB.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgB.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgB.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "peer1.orgB.com": {
+    "key": "peer1.orgB.com",
+    "org": "orgB.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgB.com/peers/peer1.orgB.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgB.com/peers/peer1.orgB.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.orgB.com": {
+    "key": "peer2.orgB.com",
+    "org": "orgB.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgB.com/peers/peer2.orgB.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgB.com/peers/peer2.orgB.com/msp/keystore/priv_sk",
+    "type": "peers"
+  }
+}

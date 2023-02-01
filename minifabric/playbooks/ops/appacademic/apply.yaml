@@ -1,0 +1,30 @@
+---
+- name: Create appacademic run script
+  template:
+    src: "{{ pjroot }}/playbooks/ops/appacademic/templates/appacademic.j2"
+    dest: "{{ pjroot }}/vars/run/appacademic.sh"
+    mode: +x
+
+- name: Run the appacademic application
+  command: >-
+    docker run -d --network {{ NETNAME }} --name appacademic --hostname appacademic
+    --expose 8080
+    -e ORG_NAME={{ CURRENT_ORG }}
+    -v /var/run/docker.sock:/var/run/docker.sock
+    -v {{ hostroot }}/vars:/vars
+    -v {{ hostroot }}/vars/app/:/go/src/github.com/app
+    --entrypoint /vars/run/appacademic.sh
+    {{ LANGUAGEENVS['node'] }}
+  register: runstates
+
+- name: appacademic run
+  when: runstates.rc != 0
+  debug:
+    msg: "{{ runstates.stderr_lines }}"
+  tags: [print_action]
+
+- name: appacademic run
+  when: runstates.rc == 0
+  debug:
+    msg: "Application in node completed successfully"
+  tags: [print_action]

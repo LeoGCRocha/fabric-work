@@ -1,0 +1,30 @@
+---
+- name: Create appdecree run script
+  template:
+    src: "{{ pjroot }}/playbooks/ops/appdecree/templates/appdecree.j2"
+    dest: "{{ pjroot }}/vars/run/appdecree.sh"
+    mode: +x
+
+- name: Run the appdecree application
+  command: >-
+    docker run -d --network {{ NETNAME }} --name appdecree --hostname appdecree
+    --expose 8080
+    -e ORG_NAME={{ CURRENT_ORG }}
+    -v /var/run/docker.sock:/var/run/docker.sock
+    -v {{ hostroot }}/vars:/vars
+    -v {{ hostroot }}/vars/app/:/go/src/github.com/app
+    --entrypoint /vars/run/appdecree.sh
+    {{ LANGUAGEENVS['node'] }}
+  register: runstates
+
+- name: appdecree run
+  when: runstates.rc != 0
+  debug:
+    msg: "{{ runstates.stderr_lines }}"
+  tags: [print_action]
+
+- name: appdecree run
+  when: runstates.rc == 0
+  debug:
+    msg: "Application in node completed successfully"
+  tags: [print_action]

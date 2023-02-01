@@ -1,0 +1,118 @@
+{
+    "functionNameError": {
+        "httpStatus": 400,
+        "templateMessage": "O nome da função não pode estar vazio."
+    },
+    "invalidFunctionNameError": {
+        "httpStatus": 400,
+        "templateMessage": "A função solicitada não foi definida."
+    },
+    "cpfNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo CPF não pode ser nulo nesta função."
+    },
+    "digestValueNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo digestValue não pode ser nulo."
+    },
+    "codigoCursoNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo codigoCurso não pode ser nulo."
+    },
+    "codigoIesNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo codigoIes não pode ser nulo."
+    },
+    "codigoCurriculoNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo codigoCurriculo não pode ser nulo."
+    },
+    "iesEmissioraNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo iesEmissora não pode ser nulo."
+    },
+    "IESExistsError": {
+        "httpStatus": 400,
+        "templateMessage": "Não foi possível verificar se a IES existe."
+    },
+    "curricullorNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo curriculo não pode ser nulo."
+    },
+    "nomeNullError": {
+        "httpStatus": 400,
+        "templateMessage": "O campo nome não pode ser nulo."
+    },
+    "invalidXMLError": {
+        "httpStatus": 400,
+        "templateMessage": "XML invalido."
+    },
+    "walletAdminNotFound": {
+        "httpStatus": 500,
+        "templateMessage": "Administrador não foi encontrado na wallet."
+    },
+    "invalidOptionType": {
+        "httpStatus": 400,
+        "templateMessage": "O tipo de opção deve ser 'write' ou 'read'."
+    },
+    "invalidOPParameter": {
+        "httpStatus": 400,
+        "templateMessage": "Parâmetro op não foi definido corretamente."
+    },
+    "invalidJsonParameter": {
+        "httpStatus": 400,
+        "templateMessage": "JSON enviado como parâmetro não foi definido corretamente."
+    },
+    "courseCreationError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível criar o curso."
+    },
+    "IESRegCreationError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível criar a IES reguladora."
+    },
+    "IESRegUpdateError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível atualizar a IES reguladora."
+    },
+    "cursoRegCreationError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível criar o curso reguladora."
+    },
+    "cursoRegUpdateError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível atualizar o curso reguladora."
+    },
+    "IESCreationError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível criar a IES."
+    },
+    "ledgerCreationError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível ler a ledger."
+    },
+    "XMLStoreError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível armazenar o XML."
+    },
+    "argsLen": {
+        "httpStatus": 400,
+        "templateMessage": "A função espera %s argumento(s) do tipo %s: %s."
+    },
+    "transactionError": {
+        "httpStatus": 500,
+        "templateMessage": "Não foi possível executar a transacao."
+    },
+    "invalidOption": {
+        "httpStatus": 400,
+        "templateMessage": "Opção inválida."
+    },
+    "applicationError": {
+        "httpStatus": 500,
+        "templateMessage": "A aplicação não conseguiu processar a transação e retornou o seguinte erro:\n%s"
+    },
+    "axiosError": {
+        "httpStatus": 500,
+        "templateMessage": "Houve uma falha na comunicação com a aplicação."
+    }
+}

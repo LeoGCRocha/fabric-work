@@ -1,0 +1,286 @@
+---
+# ROOTPATH should be set to the absolute path of crypto material starting directory
+# for example: export ROOTPATH=/home/ubuntu/mywork/vars/keyfiles
+"name": "mysite"
+"x-type": "hlfv-2.3.0"
+"version": "1.0.0"
+"client":
+  "organization": "orgA.com"
+  "cryptoconfig":
+    "path": "${ROOTPATH}"
+  "connection":
+    "timeout":
+      "peer":
+        "endorser": "300"
+        "eventHub": "300"
+        "eventReg": "300"
+      "orderer": "300"
+  "credentialStore":
+    "path": "/tmp/state-store"
+    "cryptoStore":
+      "path": "/tmp/msp"
+  "BCCSP":
+    "security":
+      "enabled": "true"
+      "default":
+        "provider": "SW"
+      "hashAlgorithm": "SHA2"
+      "softVerify": "true"
+      "level": "256"
+
+"channels":
+  "jornada":
+    "orderers":
+    - "orderer1.orgA-orderer.com"
+    "peers":
+      "peer2.orgX.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.orgX.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer2.orgA.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.orgA.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+
+"organizations":
+  "orgA-orderer.com":
+    "mspid": "orgA-orderer-com"
+    "cryptoPath": "ordererOrganizations/orgA-orderer.com/users/{username}@orgA-orderer.com/msp"
+    "orderers":
+    - "orderer1.orgA-orderer.com"
+    "certificateAuthorities":
+  "orgA.com":
+    "mspid": "orgA-com"
+    "cryptoPath": "peerOrganizations/orgA.com/users/{username}@orgA.com/msp"
+    "peers":
+    - "peer2.orgA.com"
+    - "peer1.orgA.com"
+    "certificateAuthorities":
+    - "ca1.orgA.com"
+  "orgX.com":
+    "mspid": "orgX-com"
+    "cryptoPath": "peerOrganizations/orgX.com/users/{username}@orgX.com/msp"
+    "peers":
+    - "peer2.orgX.com"
+    - "peer1.orgX.com"
+    "certificateAuthorities":
+    - "ca1.orgX.com"
+
+"orderers":
+  "orderer1.orgA-orderer.com":
+    "url": "grpcs://192.168.0.26:7056"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer1.orgA-orderer.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICwTCCAmagAwIBAgIUPP+r3BsWkORU59ygm1r4lzBm1ngwCgYIKoZIzj0EAwIw
+        dDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRkwFwYDVQQKDBBvcmdBLW9yZGVyZXIuY29tMR8wHQYDVQQDDBZ0
+        bHNjYS5vcmdBLW9yZGVyZXIuY29tMB4XDTIzMDIwMTE3MzAwNVoXDTMzMDEyOTE3
+        MzAwNVowdDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAw
+        DgYDVQQHDAdSYWxlaWdoMRkwFwYDVQQKDBBvcmdBLW9yZGVyZXIuY29tMR8wHQYD
+        VQQDDBZ0bHNjYS5vcmdBLW9yZGVyZXIuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D
+        AQcDQgAEUWmx9XWS0DFrG3eH8md5smYPB9XUXYnPCRblevqJn3kUOFXqxMDOsWnh
+        4ZL30XXcSdgd+Lj96Y1T9DOdPJMhjqOB1TCB0jAdBgNVHQ4EFgQU0YP+Vz8/7my7
+        v6XwBVyM6WV6Ng0wHwYDVR0jBBgwFoAU0YP+Vz8/7my7v6XwBVyM6WV6Ng0wDwYD
+        VR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUH
+        AwEGCCsGAQUFBwMCMFAGA1UdEQRJMEeHBMCoABqCFnRsc2NhLm9yZ0Etb3JkZXJl
+        ci5jb22CFnRsc2NhLW9yZ0Etb3JkZXJlci1jb22CCWxvY2FsaG9zdIcEfwAAATAK
+        BggqhkjOPQQDAgNJADBGAiEAtJQASMmiO0kiAx/HBtk9w9GNP/UiO5keASKWCOUN
+        5SgCIQC5RtXFth8Beoyd9XIoc+D786sKT6G30kN6jg9dHCDG5w==
+        -----END CERTIFICATE-----
+
+"peers":
+  "peer2.orgX.com":
+    "url": "grpcs://192.168.0.26:7052"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.orgX.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICkzCCAjqgAwIBAgIUAieJpJXop6P9fYuNFtKh4m63QtQwCgYIKoZIzj0EAwIw
+        ZTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdYLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9y
+        Z1guY29tMB4XDTIzMDIwMTE3MzA0MFoXDTMzMDEyOTE3MzA0MFowZTELMAkGA1UE
+        BhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdo
+        MREwDwYDVQQKDAhvcmdYLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9yZ1guY29tMFkw
+        EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgF4j26FePy/J6+B+m1CiRiT2QfWgb1N8
+        Jm2+EXqjzoHo/IHw4+hWRkCHzChVPEeRFZ5z5OxBQpIMq0FhKZTxS6OBxzCBxDAd
+        BgNVHQ4EFgQUtMRwPu4bdJiM55lI5MVOGp72RqwwHwYDVR0jBBgwFoAUtMRwPu4b
+        dJiM55lI5MVOGp72RqwwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMEIGA1UdEQQ7MDmHBMCoABqC
+        D3Rsc2NhMS5vcmdYLmNvbYIPdGxzY2ExLW9yZ1gtY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDRwAwRAIgKcmMYaTYOYoQHdjsXpnRU5z64Xld/ekqc/hW
+        FgVUi2ICIAWoqk4UtjcykmuFPbGTPq7A19BsIL/JKblXgbD9zImp
+        -----END CERTIFICATE-----
+
+  "peer1.orgX.com":
+    "url": "grpcs://192.168.0.26:7053"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.orgX.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICkzCCAjqgAwIBAgIUAieJpJXop6P9fYuNFtKh4m63QtQwCgYIKoZIzj0EAwIw
+        ZTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdYLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9y
+        Z1guY29tMB4XDTIzMDIwMTE3MzA0MFoXDTMzMDEyOTE3MzA0MFowZTELMAkGA1UE
+        BhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdo
+        MREwDwYDVQQKDAhvcmdYLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9yZ1guY29tMFkw
+        EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgF4j26FePy/J6+B+m1CiRiT2QfWgb1N8
+        Jm2+EXqjzoHo/IHw4+hWRkCHzChVPEeRFZ5z5OxBQpIMq0FhKZTxS6OBxzCBxDAd
+        BgNVHQ4EFgQUtMRwPu4bdJiM55lI5MVOGp72RqwwHwYDVR0jBBgwFoAUtMRwPu4b
+        dJiM55lI5MVOGp72RqwwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMEIGA1UdEQQ7MDmHBMCoABqC
+        D3Rsc2NhMS5vcmdYLmNvbYIPdGxzY2ExLW9yZ1gtY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDRwAwRAIgKcmMYaTYOYoQHdjsXpnRU5z64Xld/ekqc/hW
+        FgVUi2ICIAWoqk4UtjcykmuFPbGTPq7A19BsIL/JKblXgbD9zImp
+        -----END CERTIFICATE-----
+
+  "peer2.orgA.com":
+    "url": "grpcs://192.168.0.26:7054"
+    "grpcOptions":
+      "ssl-target-name-override": "peer2.orgA.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIClTCCAjqgAwIBAgIUNeRDs45zJCgj/5StwHNlJrlu8SwwCgYIKoZIzj0EAwIw
+        ZTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdBLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9y
+        Z0EuY29tMB4XDTIzMDIwMTE3MzAyMFoXDTMzMDEyOTE3MzAyMFowZTELMAkGA1UE
+        BhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdo
+        MREwDwYDVQQKDAhvcmdBLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9yZ0EuY29tMFkw
+        EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEHYty8iPt1mvoPEhU8nw0maBhuQtuEB2
+        kg/omWTSl59inoai3muOcFRAcsoqmTJ+SKgMnR57Eoq/S4CyJEWYOKOBxzCBxDAd
+        BgNVHQ4EFgQUjM2RFUwMRe3ftZuYb7nAsB1kZp0wHwYDVR0jBBgwFoAUjM2RFUwM
+        Re3ftZuYb7nAsB1kZp0wDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMEIGA1UdEQQ7MDmHBMCoABqC
+        D3Rsc2NhMS5vcmdBLmNvbYIPdGxzY2ExLW9yZ0EtY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDSQAwRgIhAMd3etrk6R6XcF+KrCxLAI7xjXwy9Q+wzy3l
+        /OZ7/zmGAiEAtZODCBYjElCs/eRjDVW4NDAEGNegQZPxjRjlSMcjzeg=
+        -----END CERTIFICATE-----
+
+  "peer1.orgA.com":
+    "url": "grpcs://192.168.0.26:7055"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.orgA.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIClTCCAjqgAwIBAgIUNeRDs45zJCgj/5StwHNlJrlu8SwwCgYIKoZIzj0EAwIw
+        ZTELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdBLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9y
+        Z0EuY29tMB4XDTIzMDIwMTE3MzAyMFoXDTMzMDEyOTE3MzAyMFowZTELMAkGA1UE
+        BhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdo
+        MREwDwYDVQQKDAhvcmdBLmNvbTEYMBYGA1UEAwwPdGxzY2ExLm9yZ0EuY29tMFkw
+        EwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEHYty8iPt1mvoPEhU8nw0maBhuQtuEB2
+        kg/omWTSl59inoai3muOcFRAcsoqmTJ+SKgMnR57Eoq/S4CyJEWYOKOBxzCBxDAd
+        BgNVHQ4EFgQUjM2RFUwMRe3ftZuYb7nAsB1kZp0wHwYDVR0jBBgwFoAUjM2RFUwM
+        Re3ftZuYb7nAsB1kZp0wDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYw
+        HQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMEIGA1UdEQQ7MDmHBMCoABqC
+        D3Rsc2NhMS5vcmdBLmNvbYIPdGxzY2ExLW9yZ0EtY29tgglsb2NhbGhvc3SHBH8A
+        AAEwCgYIKoZIzj0EAwIDSQAwRgIhAMd3etrk6R6XcF+KrCxLAI7xjXwy9Q+wzy3l
+        /OZ7/zmGAiEAtZODCBYjElCs/eRjDVW4NDAEGNegQZPxjRjlSMcjzeg=
+        -----END CERTIFICATE-----
+
+"certificateAuthorities":
+  "ca1.orgX.com":
+    "url": "https://192.168.0.26:7050"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIIChzCCAi6gAwIBAgIUardL2HNhBFe8WVEX3N/mYah2ss8wCgYIKoZIzj0EAwIw
+        YjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdYLmNvbTEVMBMGA1UEAwwMY2ExLm9yZ1gu
+        Y29tMB4XDTIzMDIwMTE3MzAzOVoXDTMzMDEyOTE3MzAzOVowYjELMAkGA1UEBhMC
+        VVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdoMREw
+        DwYDVQQKDAhvcmdYLmNvbTEVMBMGA1UEAwwMY2ExLm9yZ1guY29tMFkwEwYHKoZI
+        zj0CAQYIKoZIzj0DAQcDQgAEXSCyD7+GDI4TQSia5346+stnovArW5bYfOspRPS6
+        fn5H8x5ZUQl4BRty9ajG+6l9KnoscE/PFfGm9Kh1qT67MKOBwTCBvjAdBgNVHQ4E
+        FgQUKStqJI6bk0ZfNtROCGc6Wg/o4zowHwYDVR0jBBgwFoAUKStqJI6bk0ZfNtRO
+        CGc6Wg/o4zowDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0l
+        BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMDwGA1UdEQQ1MDOHBMCoABqCDGNhMS5v
+        cmdYLmNvbYIMY2ExLW9yZ1gtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0E
+        AwIDRwAwRAIgCH+pxjbQwcHRAwM2Zj6kg6997974Mg7wqqcaJjgCo/0CICLJIvwN
+        RPBWy1szLSZDIWbUmHffhzg3NLK0WgtUEibQ
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "teste"
+  "ca1.orgA.com":
+    "url": "https://192.168.0.26:7051"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIICiTCCAi6gAwIBAgIUa5jlNn8RJe2+aU2bncAJs75joogwCgYIKoZIzj0EAwIw
+        YjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMREwDwYDVQQKDAhvcmdBLmNvbTEVMBMGA1UEAwwMY2ExLm9yZ0Eu
+        Y29tMB4XDTIzMDIwMTE3MzAyMFoXDTMzMDEyOTE3MzAyMFowYjELMAkGA1UEBhMC
+        VVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQHDAdSYWxlaWdoMREw
+        DwYDVQQKDAhvcmdBLmNvbTEVMBMGA1UEAwwMY2ExLm9yZ0EuY29tMFkwEwYHKoZI
+        zj0CAQYIKoZIzj0DAQcDQgAEq041MAb1OGgiotoij3H/95a8j0KUZnI7sI608rM2
+        jjiHIIv8qPC35FcB+zmwVZtSK7/uWcfrp+0Uee+KdwenxKOBwTCBvjAdBgNVHQ4E
+        FgQUo0iHDD/XPgi6+h3GwfFbF3ktx5swHwYDVR0jBBgwFoAUo0iHDD/XPgi6+h3G
+        wfFbF3ktx5swDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0l
+        BBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMDwGA1UdEQQ1MDOHBMCoABqCDGNhMS5v
+        cmdBLmNvbYIMY2ExLW9yZ0EtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0E
+        AwIDSQAwRgIhAMbN+Zy+i/Ny/Ujf0BMU3PQ/pSkcGF8wx7TZ4EV5zjS6AiEA8VLI
+        9++pWAINKM0c2x4lwcGSuWUIHeljKo6sLASB7Vg=
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "teste"
+
+"entityMatchers":
+  "orderer":
+  - "mappedHost": "orderer1.orgA-orderer.com"
+    "pattern": "(\\w*)orderer1.orgA-orderer.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer1.orgA-orderer.com"
+    "urlSubstitutionExp": "192.168.0.26:7056"
+  
+  "peer":
+  - "mappedHost": "peer2.orgX.com"
+    "pattern": "(\\w*)peer2.orgX.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer2.orgX.com"
+    "urlSubstitutionExp": "192.168.0.26:7052"
+  - "mappedHost": "peer1.orgX.com"
+    "pattern": "(\\w*)peer1.orgX.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.orgX.com"
+    "urlSubstitutionExp": "192.168.0.26:7053"
+  - "mappedHost": "peer2.orgA.com"
+    "pattern": "(\\w*)peer2.orgA.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer2.orgA.com"
+    "urlSubstitutionExp": "192.168.0.26:7054"
+  - "mappedHost": "peer1.orgA.com"
+    "pattern": "(\\w*)peer1.orgA.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.orgA.com"
+    "urlSubstitutionExp": "192.168.0.26:7055"
+  
+  "certificateAuthorities":
+  - "mappedHost": "ca1.orgX.com"
+    "pattern": "(\\w*)ca1.orgX.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.orgX.com"
+    "urlSubstitutionExp": "192.168.0.26:7050"
+  - "mappedHost": "ca1.orgA.com"
+    "pattern": "(\\w*)ca1.orgA.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.orgA.com"
+    "urlSubstitutionExp": "192.168.0.26:7051"

@@ -1,0 +1,26 @@
+{
+  "orgA-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "192.168.0.26", "port": "7054" },
+           { "host": "192.168.0.26", "port": "7055" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "orgX-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "192.168.0.26", "port": "7052" },
+           { "host": "192.168.0.26", "port": "7053" }
+        ]
+      },
+      "version": "0"
+    }
+  }
+}

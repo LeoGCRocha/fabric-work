@@ -1,0 +1,21 @@
+---
+
+PeerOrgs:
+  - Name: orgB.com
+    Domain: orgB.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.orgB.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer2
+        CommonName: peer2.orgB.com
+        SANS:
+          - 192.168.0.26
+      - Hostname: peer1
+        CommonName: peer1.orgB.com
+        SANS:
+          - 192.168.0.26

@@ -1,0 +1,108 @@
+{
+  "name": "fabric-network",
+  "x-type": "hlfv1",
+  "version": "1.0.0",
+  "channels": {
+    "jornada": {
+      "orderers": [
+        "orderer1.acadblock.br"
+      ],
+      "peers": [
+        "peer1.studentorg.acadblock.br",
+        "peer2.studentorg.acadblock.br"
+      ]
+    }
+  },
+  "organizations": {
+    "acadblock.br": {
+      "mspid": "acadblock-br",
+      "peers": [
+      ],
+      "orderers": [
+        "orderer1.acadblock.br"
+      ]
+    },
+    "studentorg.acadblock.br": {
+      "mspid": "studentorg-acadblock-br",
+      "peers": [
+        "peer1.studentorg.acadblock.br",
+        "peer2.studentorg.acadblock.br"
+      ],
+      "orderers": [
+      ],
+      "certificateAuthorities": [
+        "ca1.studentorg.acadblock.br"
+      ]
+    }
+  },
+  "orderers": {
+    "orderer1.acadblock.br": {
+      "url": "grpcs://192.168.0.26:7003",
+      "grpcOptions": {
+        "ssl-target-name-override": "orderer1.acadblock.br"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIICqTCCAk6gAwIBAgIULYKz2gV929vkidUkBoD6il634kIwCgYIKoZIzj0EAwIw\nbDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH\nDAdSYWxlaWdoMRUwEwYDVQQKDAxhY2FkYmxvY2suYnIxGzAZBgNVBAMMEnRsc2Nh\nLmFjYWRibG9jay5icjAeFw0yMzAxMjgxNjEzMDhaFw0zMzAxMjUxNjEzMDhaMGwx\nCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UEBwwH\nUmFsZWlnaDEVMBMGA1UECgwMYWNhZGJsb2NrLmJyMRswGQYDVQQDDBJ0bHNjYS5h\nY2FkYmxvY2suYnIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATwKi91s1l1Ovae\n1s5r7bmznT5c2SQ3/ZOw7Y3Ko04FbElSLABjOLHd2eJZsUCWukV6fbKZdQN+y4BY\npU1IfwJmo4HNMIHKMB0GA1UdDgQWBBRWx0l7tG2uU6ycNfIJo0gIWNam+DAfBgNV\nHSMEGDAWgBRWx0l7tG2uU6ycNfIJo0gIWNam+DAPBgNVHRMBAf8EBTADAQH/MA4G\nA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwSAYD\nVR0RBEEwP4cEwKgAGoISdGxzY2EuYWNhZGJsb2NrLmJyghJ0bHNjYS1hY2FkYmxv\nY2stYnKCCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNJADBGAiEAijQfEjGw\ngnr+YDAGaynqLpMa2juixV+/ghdhUa3aLCMCIQDt8xFy2IlHDtvclPJzTCWVlzIv\nHrS6h60JWqusipa14w==\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "peers": {
+    "peer1.studentorg.acadblock.br": {
+      "url": "grpcs://192.168.0.26:7001",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer1.studentorg.acadblock.br"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIC8TCCApagAwIBAgIUH/pPp8815ZayO2qI56ahFk7+0FIwCgYIKoZIzj0EAwIw\ngYMxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE\nBwwHUmFsZWlnaDEgMB4GA1UECgwXc3R1ZGVudG9yZy5hY2FkYmxvY2suYnIxJzAl\nBgNVBAMMHnRsc2NhMS5zdHVkZW50b3JnLmFjYWRibG9jay5icjAeFw0yMzAxMjgx\nNjEzMjNaFw0zMzAxMjUxNjEzMjNaMIGDMQswCQYDVQQGEwJVUzEXMBUGA1UECAwO\nTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxIDAeBgNVBAoMF3N0dWRl\nbnRvcmcuYWNhZGJsb2NrLmJyMScwJQYDVQQDDB50bHNjYTEuc3R1ZGVudG9yZy5h\nY2FkYmxvY2suYnIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASqiqZQI1kkY4gp\ni8RECJF2ncQuJmiVQSgMo13G0FHsw7EgUsVdnKQDVcrLfDkEc9/TgsUSVSalGtIg\ntk2dn6/zo4HlMIHiMB0GA1UdDgQWBBTXvM7j10fo0GapkK4qGwfzQB1kQTAfBgNV\nHSMEGDAWgBTXvM7j10fo0GapkK4qGwfzQB1kQTAPBgNVHRMBAf8EBTADAQH/MA4G\nA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwYAYD\nVR0RBFkwV4cEwKgAGoIedGxzY2ExLnN0dWRlbnRvcmcuYWNhZGJsb2NrLmJygh50\nbHNjYTEtc3R1ZGVudG9yZy1hY2FkYmxvY2stYnKCCWxvY2FsaG9zdIcEfwAAATAK\nBggqhkjOPQQDAgNJADBGAiEAkRCXD4p4BlGPu4SG7fHcafDl57U984ChemfCLWL5\nFAACIQCwP1bh2L8pzMLGNfsZvCcqKYqCPaNnCbAg9dQbocJsEg==\n-----END CERTIFICATE-----"
+      }
+    },
+    "peer2.studentorg.acadblock.br": {
+      "url": "grpcs://192.168.0.26:7002",
+      "grpcOptions": {
+        "ssl-target-name-override": "peer2.studentorg.acadblock.br"
+      },
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIC8TCCApagAwIBAgIUH/pPp8815ZayO2qI56ahFk7+0FIwCgYIKoZIzj0EAwIw\ngYMxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE\nBwwHUmFsZWlnaDEgMB4GA1UECgwXc3R1ZGVudG9yZy5hY2FkYmxvY2suYnIxJzAl\nBgNVBAMMHnRsc2NhMS5zdHVkZW50b3JnLmFjYWRibG9jay5icjAeFw0yMzAxMjgx\nNjEzMjNaFw0zMzAxMjUxNjEzMjNaMIGDMQswCQYDVQQGEwJVUzEXMBUGA1UECAwO\nTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxIDAeBgNVBAoMF3N0dWRl\nbnRvcmcuYWNhZGJsb2NrLmJyMScwJQYDVQQDDB50bHNjYTEuc3R1ZGVudG9yZy5h\nY2FkYmxvY2suYnIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASqiqZQI1kkY4gp\ni8RECJF2ncQuJmiVQSgMo13G0FHsw7EgUsVdnKQDVcrLfDkEc9/TgsUSVSalGtIg\ntk2dn6/zo4HlMIHiMB0GA1UdDgQWBBTXvM7j10fo0GapkK4qGwfzQB1kQTAfBgNV\nHSMEGDAWgBTXvM7j10fo0GapkK4qGwfzQB1kQTAPBgNVHRMBAf8EBTADAQH/MA4G\nA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwYAYD\nVR0RBFkwV4cEwKgAGoIedGxzY2ExLnN0dWRlbnRvcmcuYWNhZGJsb2NrLmJygh50\nbHNjYTEtc3R1ZGVudG9yZy1hY2FkYmxvY2stYnKCCWxvY2FsaG9zdIcEfwAAATAK\nBggqhkjOPQQDAgNJADBGAiEAkRCXD4p4BlGPu4SG7fHcafDl57U984ChemfCLWL5\nFAACIQCwP1bh2L8pzMLGNfsZvCcqKYqCPaNnCbAg9dQbocJsEg==\n-----END CERTIFICATE-----"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.studentorg.acadblock.br": {
+      "url": "https://192.168.0.26:7000",
+      "tlsCACerts": {
+        "pem": "-----BEGIN CERTIFICATE-----\nMIIC5DCCAoqgAwIBAgIUZmwCHcYMahZphePo6gPGM81YE5owCgYIKoZIzj0EAwIw\ngYAxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE\nBwwHUmFsZWlnaDEgMB4GA1UECgwXc3R1ZGVudG9yZy5hY2FkYmxvY2suYnIxJDAi\nBgNVBAMMG2NhMS5zdHVkZW50b3JnLmFjYWRibG9jay5icjAeFw0yMzAxMjgxNjEz\nMjNaFw0zMzAxMjUxNjEzMjNaMIGAMQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9y\ndGggQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxIDAeBgNVBAoMF3N0dWRlbnRv\ncmcuYWNhZGJsb2NrLmJyMSQwIgYDVQQDDBtjYTEuc3R1ZGVudG9yZy5hY2FkYmxv\nY2suYnIwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQw/CTNuSMeg/zHvqg011J2\nn+Dh1ZlMIVVBFP/VFXqCTHkLNKc4lJW0vH4XXZQQLVUyttYEj+VH741t+K71/dx0\no4HfMIHcMB0GA1UdDgQWBBRHE85r8Qlz+RWDVpMwEppKVEXEgTAfBgNVHSMEGDAW\ngBRHE85r8Qlz+RWDVpMwEppKVEXEgTAPBgNVHRMBAf8EBTADAQH/MA4GA1UdDwEB\n/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwWgYDVR0RBFMw\nUYcEwKgAGoIbY2ExLnN0dWRlbnRvcmcuYWNhZGJsb2NrLmJyghtjYTEtc3R1ZGVu\ndG9yZy1hY2FkYmxvY2stYnKCCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNI\nADBFAiEA6I/5m/FWB+rtJEkw5/dVKd9o3d0HxV7pjDV89T5yJOkCIFJ7/X9touRZ\nWjGy50r0WaM808VOEz3ABu5crXSXNSgF\n-----END CERTIFICATE-----"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    }
+  },
+  "entityMatchers": {
+    "orderer": [
+      { "mappedHost": "orderer1.acadblock.br",
+        "pattern": "(\\w*)orderer1.acadblock.br(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "orderer1.acadblock.br",
+        "urlSubstitutionExp": "192.168.0.26:7003"
+      }
+    ],
+    "peer": [
+      { "mappedHost": "peer1.studentorg.acadblock.br",
+        "pattern": "(\\w*)peer1.studentorg.acadblock.br(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "peer1.studentorg.acadblock.br",
+        "urlSubstitutionExp": "192.168.0.26:7001"
+      },
+      { "mappedHost": "peer2.studentorg.acadblock.br",
+        "pattern": "(\\w*)peer2.studentorg.acadblock.br(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "peer2.studentorg.acadblock.br",
+        "urlSubstitutionExp": "192.168.0.26:7002"
+      }
+    ],
+  "certificateAuthorities": [
+      { "mappedHost": "ca1.studentorg.acadblock.br",
+        "pattern": "(\\w*)ca1.studentorg.acadblock.br(\\w*)",
+        "sslTargetOverrideUrlSubstitutionExp": "ca1.studentorg.acadblock.br",
+        "urlSubstitutionExp": "192.168.0.26:7000"
+      }
+    ]
+  }
+}

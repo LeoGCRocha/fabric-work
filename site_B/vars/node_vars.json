@@ -1,0 +1,64 @@
+{
+  "allcas": [
+    {
+      "adminPassword": "adminpw",
+      "command": "fabric-ca-server start -b admin:adminpw --cfg.affiliations.allowremove --cfg.identities.allowremove",
+      "fullname": "ca1.orgB.com",
+      "mspid": "orgB-com",
+      "name": "ca1",
+      "oport": "8070",
+      "org": "orgB.com",
+      "port": "7070",
+      "portmap": "-p 7070:7054 -p 8070:9443",
+      "type": "ca",
+      "url": "192.168.0.26"
+    }
+  ],
+  "allcouchdbs": [],
+  "allorderers": [],
+  "allorgs": [
+    "orgB.com"
+  ],
+  "allpeers": [
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer2.orgB.com",
+      "mspid": "orgB-com",
+      "name": "peer2",
+      "oport": "8071",
+      "org": "orgB.com",
+      "port": "7071",
+      "portmap": "-p 7071:7051 -p 8071:7061",
+      "type": "peer",
+      "url": "192.168.0.26"
+    },
+    {
+      "adminPassword": "adminpw",
+      "fullname": "peer1.orgB.com",
+      "mspid": "orgB-com",
+      "name": "peer1",
+      "oport": "8072",
+      "org": "orgB.com",
+      "port": "7072",
+      "portmap": "-p 7072:7051 -p 8072:7061",
+      "type": "peer",
+      "url": "192.168.0.26"
+    }
+  ],
+  "caorgs": [
+    "orgB.com"
+  ],
+  "console_port": "7076",
+  "explorer_port": "7074",
+  "ordererorgs": [],
+  "orgattrs": {
+    "orgB.com": {
+      "certpath": "peerOrganizations",
+      "mspid": "orgB-com"
+    }
+  },
+  "peerorgs": [
+    "orgB.com"
+  ],
+  "portainer_port": "7075"
+}

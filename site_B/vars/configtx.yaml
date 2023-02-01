@@ -1,0 +1,125 @@
+---
+Organizations:
+  - &orgB-com
+      Name: orgB-com
+      ID: orgB-com
+      MSPDir: keyfiles/peerOrganizations/orgB.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('orgB-com.admin', 'orgB-com.peer', 'orgB-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('orgB-com.admin', 'orgB-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('orgB-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('orgB-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.0.26
+        Port: 7071
+      - Host: 192.168.0.26
+        Port: 7072
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "ANY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "ANY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: solo
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *orgB-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *orgB-com

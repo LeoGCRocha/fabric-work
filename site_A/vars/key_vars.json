@@ -1,0 +1,100 @@
+{
+  "Admin@orgA-orderer.com": {
+    "key": "Admin@orgA-orderer.com",
+    "org": "orgA-orderer.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/orgA-orderer.com/users/Admin@orgA-orderer.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/orgA-orderer.com/users/Admin@orgA-orderer.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@orgA.com": {
+    "key": "Admin@orgA.com",
+    "org": "orgA.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgA.com/users/Admin@orgA.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgA.com/users/Admin@orgA.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@orgX.com": {
+    "key": "Admin@orgX.com",
+    "org": "orgX.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgX.com/users/Admin@orgX.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgX.com/users/Admin@orgX.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "orderer1.orgA-orderer.com": {
+    "key": "orderer1.orgA-orderer.com",
+    "org": "orgA-orderer.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/orgA-orderer.com/orderers/orderer1.orgA-orderer.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/orgA-orderer.com/orderers/orderer1.orgA-orderer.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orgA-orderer.com": {
+    "key": "orgA-orderer.com",
+    "org": "orgA-orderer.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/orgA-orderer.com/ca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/orgA-orderer.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "orgA-orderer.com.tlsca": {
+    "key": "orgA-orderer.com",
+    "org": "orgA-orderer.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/orgA-orderer.com/tlsca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/orgA-orderer.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "orgA.com": {
+    "key": "orgA.com",
+    "org": "orgA.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgA.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgA.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "orgA.com.tlsca": {
+    "key": "orgA.com",
+    "org": "orgA.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgA.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgA.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "orgX.com": {
+    "key": "orgX.com",
+    "org": "orgX.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgX.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgX.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "orgX.com.tlsca": {
+    "key": "orgX.com",
+    "org": "orgX.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgX.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgX.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "peer1.orgA.com": {
+    "key": "peer1.orgA.com",
+    "org": "orgA.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgA.com/peers/peer1.orgA.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgA.com/peers/peer1.orgA.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.orgX.com": {
+    "key": "peer1.orgX.com",
+    "org": "orgX.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgX.com/peers/peer1.orgX.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgX.com/peers/peer1.orgX.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.orgA.com": {
+    "key": "peer2.orgA.com",
+    "org": "orgA.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgA.com/peers/peer2.orgA.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgA.com/peers/peer2.orgA.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer2.orgX.com": {
+    "key": "peer2.orgX.com",
+    "org": "orgX.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/orgX.com/peers/peer2.orgX.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/orgX.com/peers/peer2.orgX.com/msp/keystore/priv_sk",
+    "type": "peers"
+  }
+}

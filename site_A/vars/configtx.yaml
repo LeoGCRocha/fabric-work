@@ -1,0 +1,174 @@
+---
+Organizations:
+  - &orgA-orderer-com
+      Name: orgA-orderer-com
+      ID: orgA-orderer-com
+      MSPDir: keyfiles/ordererOrganizations/orgA-orderer.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('orgA-orderer-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('orgA-orderer-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('orgA-orderer-com.admin')"
+  - &orgA-com
+      Name: orgA-com
+      ID: orgA-com
+      MSPDir: keyfiles/peerOrganizations/orgA.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('orgA-com.admin', 'orgA-com.peer', 'orgA-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('orgA-com.admin', 'orgA-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('orgA-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('orgA-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.0.26
+        Port: 7054
+      - Host: 192.168.0.26
+        Port: 7055
+  - &orgX-com
+      Name: orgX-com
+      ID: orgX-com
+      MSPDir: keyfiles/peerOrganizations/orgX.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('orgX-com.admin', 'orgX-com.peer', 'orgX-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('orgX-com.admin', 'orgX-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('orgX-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('orgX-com.peer')"
+
+      AnchorPeers:
+      - Host: 192.168.0.26
+        Port: 7052
+      - Host: 192.168.0.26
+        Port: 7053
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "ANY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "ANY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - 192.168.0.26:7056
+  EtcdRaft:
+    Consenters:
+    - Host: 192.168.0.26
+      Port: 7056
+      ClientTLSCert: keyfiles/ordererOrganizations/orgA-orderer.com/orderers/orderer1.orgA-orderer.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/orgA-orderer.com/orderers/orderer1.orgA-orderer.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *orgA-com
+      - *orgX-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *orgA-orderer-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *orgA-orderer-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *orgA-com
+        - *orgX-com

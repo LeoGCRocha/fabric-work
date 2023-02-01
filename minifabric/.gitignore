@@ -1,0 +1,8 @@
+# Byte-compiled / optimized / DLL files
+vars/*
+*.retry
+.vscode
+app/*
+chaincode/*
+patch.diff
+.mergify.yml
